@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture || woodpulp</title>
+  
+    <link rel="shortcut icon" href="https://www.woodpulp.co.in/front/images/favicon.png" type="image/x-icon">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="contect.css">
+  <link rel="stylesheet" href="style3.css">
+   <script src="jscript.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+</head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    .mendi-container {
+  
+      margin: 0 auto;
+      padding: 30px 0;
+    }
+
+    .mendi-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 60px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease;
+      padding: 15px;
+    }
+
+    .mendi-row:hover {
+      transform: translateY(-5px);
+    }
+
+    .mendi-col-5 {
+      flex: 0 0 41.6666%;
+      max-width: 41.6666%;
+      padding: 10px;
+    }
+
+    .mendi-col-7 {
+      flex: 0 0 58.3333%;
+      max-width: 58.3333%;
+      padding: 10px;
+    }
+
+    .mendi-col-12 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .mendi-col-5.sub-img {
+      flex: 0 0 40%;
+    }
+
+    .mendi-col-5.t {
+      flex: 0 0 55%;
+    }
+
+    .pview {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .subimg {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .subimg:hover {
+      transform: scale(1.05);
+    }
+
+    h6 {
+      font-weight: 600;
+      margin: 0;
+      font-size: 18px;
+      color: #422d27;
+    }
+
+    .sname {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .styled-pagination {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .pagination {
+      display: inline-flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    .pagination li {
+      margin: 0 5px;
+    }
+
+    .pagination .page-link {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      color: #333;
+      border-radius: 4px;
+      text-decoration: none;
+      background: #fff;
+    }
+
+    .pagination .active .page-link,
+    .pagination .page-link:hover {
+      background: #422d27;
+      color: #fff;
+      border-color: #422d27;
+    }
+
+    @media (max-width: 768px) {
+      .mendi-col-5,
+      .mendi-col-7,
+      .mendi-col-5.t,
+      .mendi-col-5.sub-img {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .pview {
+        height: 200px;
+      }
+
+      .subimg {
+        height: 100px;
+      }
+    }
+  </style>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar px-3 py-1" style="background-color: #45332b; color: white;">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <!-- Contact Info -->
+      <div class="col-12 col-md-6 text-center text-md-start mb-2 mb-md-0">
+        <div class="contact-info small">
+          <i class="fa fa-phone me-2"></i> +91 93757 70770 &nbsp;&nbsp;
+          <i class="fa fa-envelope me-2"></i> info@woodpulp.co.in
+        </div>
+      </div>
+
+      <!-- Google Translate -->
+      <div class="col-12 col-md-6 text-center text-md-end">
+        <div id="google_translate_element" class="translate-box"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- Header -->
+ <div class="header-upper py-4" style="background-color: #fff;">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+
+      <!-- Logo Left Corner -->
+      <div class="logo">
+        <a href="https://www.woodpulp.co.in">
+          <img 
+            src="https://www.woodpulp.co.in/front/images/slider/woodpulp_logo_new.png"
+            alt="WoodPulp Logo">
+        </a>
+      </div>
+
+      <!-- Certifications Right Corner -->
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://www.woodpulp.co.in/front/images/isi.jpg" alt="ISI Logo" height="50">
+        <img src="https://www.woodpulp.co.in/front/images/India_Green Building_Council.jpg" alt="Green Building" height="50">
+        <img src="https://www.woodpulp.co.in/front/images/Make_in_India.jpg" alt="Make in India" height="50">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- Sticky Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark sticky-top px-4" style="background-color: #45332b;">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img src="https://www.woodpulp.co.in/front/images/slider/woodpulp_logo_new.png">
+    </a>
+
+      <!-- Navbar toggler for collapse -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Centered menu -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="companyprofile.htm">Company Profile</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">Evolve Series</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="architecher.htm">Architecture Choice</a></li>
+                  <li><a class="dropdown-item" href="#">Project Choice</a></li>
+                  <li><a class="dropdown-item" href="#">Solid Colors</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">Classic Series</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Option A</a></li>
+                  <li><a class="dropdown-item" href="#">Option B</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="techinal.html">Technical Property</a></li>
+          <li class="nav-item"><a class="nav-link" href="contectus.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Sidebar trigger always visible -->
+      <button class="btn btn-outline-light ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Sidebar -->
+  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="sidebarMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Follow Us</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Woodpulp, an initiative by a team of experienced engineers to serve wood workers with world-class products.</p>
+      <hr>
+      <ul class="social-links">
+        <li><a href="https://www.linkedin.com/company/wood-pulp-panel/about/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="https://www.instagram.com/woodpulp_panel/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="https://twitter.com/woodpulp_panel" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+      </ul>
+      <hr>
+      <div class="map-container">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14696.762577141884!2d70.707269!3d22.943205!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395a1dfad2b5354d%3A0xb87a8226003a7ebc!2sWoodpulp%20Particle%20Board!5e0!3m2!1sen!2sin!4v1692008394236!5m2!1sen!2sin" width="100%" height="100%"
+                                        style="border:0;" allowfullscreen="" loading="lazy" class="sidebarIframe"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Icons Fixed Right -->
+  <div class="social-icons">
+    <a href="https://wa.me/+919375770770?text=hii"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:sales.co@woodpulp.co.in"><i class="fa-solid fa-square-envelope"></i></i></a>
+  </div>
+
+        <!--Page Title-->
+    <section class="page-title" style="background-image:url(https://www.woodpulp.co.in/front/images/banner/Product-banner.jpg);">
+        <div class="auto-container">
+            <div class="inner-container clearfix"></div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+  <div class="mendi-container">
+
+    <!-- Product 1 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/brentwood-tk.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/brentwood-tk.webp" class="pview" alt="EV 101">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/brentwood-tk.webp" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/brentwood-tk.webp" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 101 Brent wood TK</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/2-santana-dk.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/2-santana-dk.webp" class="pview" alt="EV 102">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/ev-102-santana-dk.webp" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/ev-102-santana-dk.webp" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 102 Santana DK</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/santana-lt.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/santana-lt.webp" class="pview" alt="EV 103">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/santana-lt.webp" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/santana-lt.webp" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 103 Santana LT</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/bengali-mango.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/bengali-mango.webp" class="pview" alt="EV 104">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/bengali-mango.jpeg" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/bengali-mango.jpeg" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 104 Bengali Mango</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/coburg-oak.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/coburg-oak.webp" class="pview" alt="EV 105">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/coburg-oak.webp" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/coburg-oak.webp" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 105 Cuborg Oak</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="mendi-row">
+      <div class="mendi-col-5">
+        <a href="https://www.woodpulp.co.in/product-external-image/sevilla-olive.webp" data-fancybox="gallery">
+          <img src="https://www.woodpulp.co.in/product-external-image/sevilla-olive.webp" class="pview" alt="EV 106">
+        </a>
+      </div>
+      <div class="mendi-col-7">
+        <div class="mendi-col-12">
+          <div class="mendi-col-5 sub-img">
+            <a href="https://www.woodpulp.co.in/product-image/sevilla-olive.webp" data-fancybox="gallery">
+              <img src="https://www.woodpulp.co.in/product-image/sevilla-olive.webp" class="subimg" alt="Sub">
+            </a>
+          </div>
+          <div class="mendi-col-5 t">
+            <h6>EV 106 Sevilla Olive</h6>
+            <div class="sname">Evolve Series</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Pagination -->
+<div class="styled-pagination">
+  <nav>
+    <ul class="pagination">
+      <li class="page-item disabled"><span class="page-link">&lsaquo;</span></li>
+      <li class="page-item active"><span class="page-link">1</span></li>
+      <li class="page-item"><a class="page-link" href="page2.html">2</a></li>
+      <li class="page-item"><a class="page-link" href="page3.html">3</a></li>
+      <li class="page-item"><a class="page-link" href="page2.html">&rsaquo;</a></li>
+    </ul>
+  </nav>
+</div>
+     <!-- Main Footer -->
+        <footer class="main-footer" style="background-image: url(https://www.woodpulp.co.in/front/images/background/3.jpg);">
+            <div class="auto-container">
+                <!--Widgets Section-->
+                <div class="widgets-section">
+                    <div class="row">
+                        <!--Big Column-->
+                        <div class="big-column col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-8 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget about-widget">
+                                        <div class="footer-logo">
+                                            <figure class="image">
+                                                <a href="https://www.woodpulp.co.in"><img loading="lazy"
+                                                        srcset="https://www.woodpulp.co.in/front/images/slider/woodpulp_white.png"
+                                                        alt="WoodPulp Logo"></a>
+                                            </figure>
+                                        </div>
+                                        <div class="widget-content">
+                                            <div class="text">Woodpulp, an Initiative by a team of experienced
+                                                engineers to serve woodworkers with world class products putting every
+                                                sense of technicality into manufacturing.</div>
+                                            <ul class="social-links">
+                                                <li class="title">Follow Us:</li>
+                                                <li><a href="https://www.linkedin.com/company/wood-pulp-panel/about/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                                                <li><a href="https://www.instagram.com/woodpulp_panel/" target="_blanks"><i class="fa-brands fa-instagram"></i></a></li>
+                                                <!-- <li><a href="#"><i class="fa fa-skype"></i></a></li> -->
+                                                <li><a href="https://twitter.com/woodpulp_panel" target="_blank"><i class="fa-brands fa-twitter"></i></i></a></li>
+                                                <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget">
+                                        <h2 class="widget-title">Useful Links</h2>
+                                        <div class="widget-content">
+                                            <ul class="list clearfix">
+                                                <li><a href="index.html">Company Profile</a></li><br>
+                                                <li><a href="techinal.html">Technical Property</a></li><br>
+                                                
+                                                <li><a href="contectus.html">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Big Column-->
+                        <div class="big-column col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+                                <div class="footer-column col-xl-5 col-lg-6 col-md-6 col-sm-12">
+                                    <!--Footer Column-->
+                                    <div class="footer-widget popular-posts">
+                                        <h2 class="widget-title">Our Products</h2>
+                                        <!--Footer Column-->
+                                        <div class="widget-content">
+                                            <ul class="list clearfix">
+                                                                                                    <li><a href="javascript:void(0)">Evolve Series</a></li><br>
+                                                                                                    <li><a href="javascript:void(0)">Classic Series</a></li><br>
+                                                                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-7 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget contact-widget">
+                                        <h2 class="widget-title">Contact Us</h2>
+                                        <div class="widget-content">
+                                            <ul class="contact-list">
+                                                <li> <span class="fa fa-map-marker"></span> Survey No. 133/3, Mahendragadh Road, Near Pipaliya Cross Road, Navlakhi Highway, At: Pipaliya- 363660 , Dist.: Morbi, Gujarat.</li>
+                                                <li> <span class="fa fa-phone"></span><a
+                                                        href="tel:+91 93757 70770">+91 93757 70770</a>
+                                                    <br><a href="mailto:info@woodpulp.co.in">info@woodpulp.co.in </a>
+                                                </li>
+                                                   <li><i class="fas fa-clock" style="color:#bf8c4d;"></i> working Hours <br> 09:00 am to
+                                                    5:00 pm</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Copyright Section -->
+<div class="footer-bottom">
+    <div class="auto-container">
+        <div class="inner-container d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
+            <div class="copyright">
+                copyrights2025.  All Rights Reserved By<strong style="color: #000;"> WOODPULP</strong> 
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+        <!-- End Main Footer -->
+     </body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll(".count-text");
+
+    counters.forEach(counter => {
+      const animate = () => {
+        const target = +counter.getAttribute("data-stop");
+        const speed = +counter.getAttribute("data-speed") || 2000;
+        let count = 0;
+        const increment = Math.ceil(target / (speed / 20));
+
+        const update = () => {
+          count += increment;
+          if (count < target) {
+            counter.innerText = count;
+            setTimeout(update, 20);
+          } else {
+            counter.innerText = target;
+          }
+        };
+
+        update();
+      };
+
+      animate();
+    });
+  });
+</script>
+
+            
+
+</script> <!-- / Order modal -->
+    <!--Scroll to top-->
+   
+    <script src="https://www.woodpulp.co.in/front/js/jquery.js"></script>
+    <script>
+        // Order Form
+        $(document).ready(function() {
+            //     $("#notificationMessage").hide();
+            //     $('#order_Form').on('submit', function(event) {
+            //         event.preventDefault();
+            //         $("#OrderBtn").prepend('<i class="fa fa-spinner fa-spin"></i>');
+            //         $("#OrderBtn").attr("disabled", 'disabled');
+            //         $.ajax({
+            //             url: "https://www.woodpulp.co.in/orders",
+            //             method: "POST",
+            //             data: new FormData(this),
+            //             dataType: 'JSON',
+            //             contentType: false,
+            //             cache: false,
+            //             processData: false,
+            //             success: function(data) {
+            //                 if (data.code == 200) {
+            //                     $("#OrderBtn").find(".fa-spinner").remove();
+            //                     $("#OrderBtn").removeAttr("disabled");
+            //                     $('#order_Form').each(function() {
+            //                         this.reset();
+            //                     });
+            //                     $("#notificationMessage").show();
+            //                     $("#orderForm").hide();
+            //                     $("#OrderBtn").hide();
+            //                 } else if (data.code == -1) {
+            //                     $("#OrderBtn").find(".fa-spinner").remove();
+            //                     $("#OrderBtn").removeAttr("disabled");
+            //                     $(".error").html('');
+            //                     $("#related_image").html(data.related_image);
+            //                 } else {
+            //                     $(".error").html('');
+            //                     $("#OrderBtn").find(".fa-spinner").remove();
+            //                     $("#OrderBtn").removeAttr("disabled");
+            //                     $.each(data.error, function(key, value) {
+            //                         $("#err_" + key).html(value);
+            //                     });
+            //                 }
+            //                 if (data.error.order_phonenumber) {
+            //                     $("#err_order_phone").html(data.error.order_phonenumber)
+            //                 }
+            //             }
+            //         })
+            //     });
+
+            $("#notificationMessage").hide();
+
+            function resetErrors() {
+                $("#err_order_name").html('');
+                $("#err_order_email").html('');
+                $("#err_order_phone").html('');
+                $("#err_order_message").html('');
+            }
+
+            var form = '#order_Form';
+            $(form).on('submit', function(e) {
+                resetErrors();
+                e.preventDefault();
+                $("#OrderBtn").prepend('<i class="fa fa-spinner fa-spin"></i>');
+                $("#OrderBtn").attr("disabled", 'disabled');
+                $.ajax({
+                    url: "https://www.woodpulp.co.in/orders",
+                    method: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.errors) {
+                            $("#OrderBtn").find(".fa-spinner").remove();
+                            $("#OrderBtn").removeAttr("disabled");
+
+                            if (response.errors.order_name) {
+                                $("#err_order_name").html(response.errors.order_name);
+                            }
+                            if (response.errors.order_email) {
+                                $("#err_order_email").html(response.errors.order_email);
+                            }
+                            if (response.errors.order_phonenumber) {
+                                $("#err_order_phone").html(response.errors.order_phonenumber);
+                            }
+                            if (response.errors.order_message) {
+                                $("#err_order_message").html(response.errors.order_message);
+                            }
+                        }
+                        if (response.code) {
+                            $(form).trigger("reset");
+                            $("#notificationMessage").show();
+                            $("#OrderBtn").find(".fa-spinner").remove();
+                            $("#orderForm").hide();
+                            $("#OrderBtn").hide();
+                            $("#OrderBtn").removeAttr("disabled");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
+    
+        <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+  new WOW().init();
+</script>
+ 
+</body>
+ <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+  <script>
+    new WOW().init();
+
+    $(document).ready(function () {
+      // Owl Carousel Init
+      $(".testimonial-carousel").owlCarousel({
+        loop: true,
+        margin: 30,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        smartSpeed: 800,
+        dots: true,
+        responsive: {
+          0: { items: 1 },
+          768: { items: 1 },
+          992: { items: 2 }
+        }
+      });
+
+      // Auto scroll example
+      let scrollWrapper = $('.scrolling-wrapper');
+      if (scrollWrapper.length) {
+        setInterval(() => {
+          scrollWrapper.animate({ scrollLeft: '+=250' }, 1000);
+        }, 3000);
+      }
+    });
+  </script>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
+</html>

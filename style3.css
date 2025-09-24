@@ -1,0 +1,109 @@
+.page-title:before {
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    opacity: .6;
+    position: absolute;
+}
+
+
+.cart-section {
+    position: relative;
+    padding: 100px 0 80px;
+    background-color: #fff;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    font-family: 'Chivo', sans-serif;
+}
+
+.cart-table thead {
+    background-color: #c08b52;
+}
+
+.cart-table thead th {
+    padding: 15px 25px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border-right: 1px solid #fff;
+    line-height: 24px;
+}
+
+.cart-table tbody tr td {
+    padding: 20px 20px;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #444;
+    text-align: center;
+    border-left: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    background-color: #fdfdfd;
+}
+
+.cart-table tbody tr td:first-child {
+    border-left: none;
+}
+
+.cart-table tbody tr td:last-child {
+    border-right: none;
+}
+
+/* Row Group Headers (e.g., "Board Properties") */
+.cart-table .bg-blue {
+    background-color: #f0f0f5;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+}
+
+/* Optional Hover Effect */
+.cart-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive Table */
+@media (max-width: 767px) {
+    .cart-table thead {
+        display: none;
+    }
+
+    .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .cart-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .cart-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .cart-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+        white-space: nowrap;
+    }
+}
